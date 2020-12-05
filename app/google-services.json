@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "407189817834",
+    "firebase_url": "https://passguard-71039.firebaseio.com",
+    "project_id": "passguard-71039",
+    "storage_bucket": "passguard-71039.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:407189817834:android:3b9c996ad5db88b69e8a93",
+        "android_client_info": {
+          "package_name": "com.arkkod.passguard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "407189817834-ie9t1l5fq2eo5dba1cg3seusju8n7riv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.arkkod.passguard",
+            "certificate_hash": "8c557a405b3af880cd2659204884e8220e820031"
+          }
+        },
+        {
+          "client_id": "407189817834-s3gbkbj71lfhfelek2nq3sash69pg86n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD7vsz9cHTpObFFeZq83FbTC9F9hHxagk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "407189817834-s3gbkbj71lfhfelek2nq3sash69pg86n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
