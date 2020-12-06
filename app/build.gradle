@@ -13,14 +13,17 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "AES_SECRET", "\"eS*ubbSpUw3pEaXG^lmlsijr&*YuL9m2YFXxP74GDOnJXKo^4X\""
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "AES_SECRET", "\"eS*ubbSpUw3pEaXG^lmlsijr&*YuL9m2YFXxP74GDOnJXKo^4X\""
         }
     }
     compileOptions {

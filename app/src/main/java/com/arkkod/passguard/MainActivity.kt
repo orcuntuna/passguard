@@ -2,6 +2,7 @@ package com.arkkod.passguard
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -38,6 +39,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_passwords, R.id.nav_credit_cards, R.id.nav_numbers), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Toast.makeText(baseContext, BuildConfig.AES_SECRET, Toast.LENGTH_LONG).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
