@@ -19,6 +19,10 @@
     <string name="login_or">or</string>
     <string name="login_register">Create New Account</string>
     <string name="login_error_message">Email or password is wrong!</string>
+    <string name="login_error_fields_empty">Please fill in all fields!</string>
 
-
+    <string name="register_register">Register</string>
+    <string name="register_password_again">Password (Again)</string>
+    <string name="register_error_password_dont_match">Passwords do not match!</string>
+    <string name="register_error_message">Could not create account!</string>
 </resources>

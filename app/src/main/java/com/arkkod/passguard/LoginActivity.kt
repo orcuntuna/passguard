@@ -1,12 +1,12 @@
 package com.arkkod.passguard
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 
 class LoginActivity : AppCompatActivity() {
@@ -15,7 +15,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var inputEmail: EditText
     private lateinit var inputPassword: EditText
     private lateinit var buttonLogin: Button
-    private lateinit var buttonRegister: Button
+    private lateinit var buttonLoginToRegister: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,28 +24,51 @@ class LoginActivity : AppCompatActivity() {
         inputEmail = findViewById(R.id.inputEmail)
         inputPassword = findViewById(R.id.inputPassword)
         buttonLogin = findViewById(R.id.buttonLogin)
-        buttonRegister = findViewById(R.id.buttonRegister)
+        buttonLoginToRegister = findViewById(R.id.buttonLoginToRegister)
     }
+
     override fun onStart() {
         super.onStart()
-        val currentUser = mAuth.currentUser
-        buttonLogin.setOnClickListener(){
+        if (mAuth.currentUser !== null) {
+            redirectHomepage()
+        }
+        buttonLogin.setOnClickListener() {
             var email = inputEmail.text.toString()
             var password = inputPassword.text.toString()
-            checkUserLogin(email, password)
+            if (!email.isNullOrEmpty() && !password.isNullOrEmpty()) {
+                checkUserLogin(email, password)
+            } else {
+                showErrorToast(getString(R.string.login_error_fields_empty))
+            }
+        }
+        buttonLoginToRegister.setOnClickListener() {
+            redirectRegister()
         }
     }
-    fun checkUserLogin(email: String, password: String){
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this){ task ->
-            if (task.isSuccessful){
-                val user = mAuth.currentUser
-                redirectHomepage(user)
-            }else{
-                Toast.makeText(baseContext, getString(R.string.login_error_message), Toast.LENGTH_LONG).show()
+
+    private fun checkUserLogin(email: String, password: String) {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
+                redirectHomepage()
+            } else {
+                showErrorToast(getString(R.string.login_error_message))
             }
         }
     }
-    fun redirectHomepage(user: FirebaseUser?){
-        // anasayfaya gönderme yapılacak
+
+    private fun showErrorToast(message: String) {
+        Toast.makeText(baseContext, message, Toast.LENGTH_LONG)
+            .show()
+    }
+
+    private fun redirectHomepage() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+    }
+
+    private fun redirectRegister() {
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
     }
 }
